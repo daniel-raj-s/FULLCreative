@@ -2,7 +2,7 @@
 
 # Selenium Test Automation Project
 
-This project demonstrates a simple test automation framework using Java, Selenium, and TestNG. It provides a foundation for writing and executing automated tests for web applications.
+This project developed as a simple test automation framework using Java, Selenium, and TestNG.
 
 ## Prerequisites
 
