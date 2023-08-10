@@ -1,4 +1,4 @@
-# FULLCreative
+# FULL Creative
 
 # Selenium Test Automation Project
 
