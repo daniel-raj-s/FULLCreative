@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="FullCreativeSuite">
+    <test name="FullCreativeTask" preserve-order="true" thread-count="10" parallel="methods">
+        <classes>
+            <class name="com.fullcreative.TestRunner.TrelloRunner"/>
+        </classes>
+    </test>
+</suite>
