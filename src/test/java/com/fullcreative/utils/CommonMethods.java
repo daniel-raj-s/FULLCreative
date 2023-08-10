@@ -1,11 +1,15 @@
 package com.fullcreative.utils;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.fullcreative.pageobjectmanager.PageObjectManager;
 
@@ -13,17 +17,19 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CommonMethods {
 
-	protected static WebDriver driver;
+	protected WebDriver driver;
 	protected Actions action;
-	protected static JavascriptExecutor js;
+	protected JavascriptExecutor js;
 	protected PageObjectManager pageObjectManager;
+	WebDriverWait wait;
+
 	
 	public void startBrowser() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		pageObjectManager = new PageObjectManager(driver);
-		action = new Actions(driver);
 		js = (JavascriptExecutor) driver;
 	}
 	
@@ -37,14 +43,18 @@ public class CommonMethods {
 	}
 
 	public WebElement getElement(By by) {
-		return driver.findElement(by);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+		return element;
 	}
 
-	public static void clickElement(By by) {
+	public void clickElement(By by) {
 		try {
-			driver.findElement(by).click();
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
+			element.click();
 		} catch (Exception e) {
-			js.executeScript("arguments[0].click();", driver.findElement(by));
+			js.executeScript("arguments[0].click();", getElement(by));
 			// TODO Auto-generated catch blocks
 		}
 	}

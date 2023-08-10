@@ -3,12 +3,12 @@ package com.fullcreative.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.fullcreative.utils.CommonMethods;
 
 public class BoardPage extends CommonMethods {
 
-	WebDriver driver;
 	By createBtn = By.xpath("//button[@aria-label='Create board or Workspace']");
 	By createBoardBtn = By.xpath("//button[@data-testid='header-create-board-button']");
 	By boardTitleInp = By.xpath("//input[@data-testid='create-board-title-input']");
@@ -28,12 +28,9 @@ public class BoardPage extends CommonMethods {
 
 	public void createBoard(String BoardTitle) {
 		clickElement(createBtn);
-		sleep(5000);
 		clickElement(createBoardBtn);
-		sleep(5000);
 		getElement(boardTitleInp).sendKeys(BoardTitle);
 		clickElement(submitBtn);
-		sleep(5000);
 		
 	}
 
@@ -44,15 +41,13 @@ public class BoardPage extends CommonMethods {
 
 	public void createCard(String CardName) {
 		clickElement(addListBtn);
-		sleep(5000);
 		getElement(addCardTitleInp).sendKeys(CardName);
-		sleep(5000);
 		clickElement(addCardBtn);
 		getElement(cancelBtn).click();
-		sleep(5000);
 	}
 
 	public void dragAndDropCard() {
+		action = new Actions(driver);
 		action.dragAndDrop(getElement(cardBoxInp), getElement(listField2)).build().perform();
 	}
 

@@ -4,11 +4,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.fullcreative.pageobjectmanager.PageObjectManager;
 import com.fullcreative.utils.CommonMethods;
 
 public class TrelloRunner extends CommonMethods {
-	
+
+
 	@BeforeTest
 	public void setUpBrowser() {
 		startBrowser();
@@ -27,14 +27,14 @@ public class TrelloRunner extends CommonMethods {
 		pageObjectManager.getBoardPage().createCard("Card 1");
 		sleep(5000);
 		pageObjectManager.getBoardPage().dragAndDropCard();
-		sleep(7000);
+		sleep(5000);
 		pageObjectManager.getBoardPage().getCardCoordinates();
 	}
 	
 	@AfterTest
 	void tearDown() {
 		sleep(15000);
-		driver.quit();
+		//driver.quit();
 	}
 
 }
