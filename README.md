@@ -1,4 +1,4 @@
-# FULLCreative Task
+# FULLCreative
 
 # Selenium Test Automation Project
 
@@ -59,7 +59,3 @@ Execute test cases using Maven:
 
 - This project uses WebDriverManager for driver management. No need to download browser drivers manually.
 - Tests are configured to run in Google Chrome by default. You can modify the browser configuration in the test scripts.
-
-
-Happy testing! 🚀
-```
