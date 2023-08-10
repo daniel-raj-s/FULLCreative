@@ -34,7 +34,7 @@ public class TrelloRunner extends CommonMethods {
 	@AfterTest
 	void tearDown() {
 		sleep(15000);
-		//driver.quit();
+		driver.quit();
 	}
 
 }
